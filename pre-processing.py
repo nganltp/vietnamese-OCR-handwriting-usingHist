@@ -82,10 +82,10 @@ def detect_char(img, list_pos, MIN = 40,MAX = 85,min_cum = 3,min_rate_below = 1,
 	for i,pos in enumerate(list_pos):
 		red_line, blue_line = pos[:2]
 		crop_img = img[0:height, red_line:blue_line]
-		cv2.imshow("cropped", crop_img)
-		gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+		cv.imshow("cropped", crop_img)
+		gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
 		#threshold
-		ret,bin = cv2.threshold(gray,150,255,cv2.THRESH_BINARY)
+		ret,bin = cv.threshold(gray,150,255,cv.THRESH_BINARY)
 		
 		h,w = img.shape[:2]
 		
@@ -142,7 +142,7 @@ def detect_char(img, list_pos, MIN = 40,MAX = 85,min_cum = 3,min_rate_below = 1,
 			if idx + MIN >= len(list_range):
 				#index_words += 1
 				#show_display(bin_color,w-1,h,index_words,list_range)
-				#cv2.line(bin_color,(w-3,0),(w-3,h-1),(0,255,0),1)
+				#cv.line(bin_color,(w-3,0),(w-3,h-1),(0,255,0),1)
 				break
 			
 			#estimate range words
@@ -186,8 +186,8 @@ def detect_char(img, list_pos, MIN = 40,MAX = 85,min_cum = 3,min_rate_below = 1,
 
 
 if __name__ == "__main__":
-	src_img = cv.imread("test/1.jpg")
-	width, height, _ = src_img.shape
+	src_img = cv.imread(os.path.join("vietnamese-OCR-handwriting-usingHist-master","test","1.jpg"))
+	width, height = src_img.shape[:2]
 
 	img = cv.cvtColor(src_img,cv.COLOR_BGR2RGB)
 	
