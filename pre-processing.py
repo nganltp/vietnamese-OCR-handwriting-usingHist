@@ -186,7 +186,7 @@ def detect_char(img, list_pos, MIN = 40,MAX = 85,min_cum = 3,min_rate_below = 1,
 
 
 if __name__ == "__main__":
-	src_img = cv.imread(os.path.join("vietnamese-OCR-handwriting-usingHist-master","test","1.jpg"))
+	src_img = cv.imread(os.path.join("test","1.jpg"))
 	width, height = src_img.shape[:2]
 
 	img = cv.cvtColor(src_img,cv.COLOR_BGR2RGB)
