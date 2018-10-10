@@ -79,30 +79,37 @@ def detect_char(img, list_pos, MIN = 40,MAX = 85,min_cum = 3,min_rate_below = 1,
 	#path_img = os.path.join("detect_ocr","OCR","5.jpg")
 	height,width = img.shape[:2]
 
-	for i,pos in enumerate(list_pos):
+	gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+	ret,bin = cv.threshold(gray,150,255,cv.THRESH_BINARY)
+
+
+	for _idx,pos in enumerate(list_pos):
 		red_line, blue_line = pos[:2]
-		crop_img = img[0:height, red_line:blue_line]
-		cv.imshow("cropped", crop_img)
-		gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
-		#threshold
-		ret,bin = cv.threshold(gray,150,255,cv.THRESH_BINARY)
 		
-		h,w = img.shape[:2]
+		crop_bin = bin[0:height, red_line:blue_line]
+		crop_img = img[0:height,red_line:blue_line]
+		# cv.imshow("cropped", crop_img)
+		# 
+		
+		# #threshold
+		
+		
+		h,w = crop_bin.shape[:2]
 		
 		for i in range(h):
 			for j in range(w):
-				bin[i][j] = 0 if bin[i][j] == 255 else 255
+				crop_bin[i][j] = 0 if crop_bin[i][j] == 255 else 255
 		
 		list_range = []
 		
 		for i in range(w):
 			num = 0
 			for j in range(h):
-				num += bin[j][i]
+				num += crop_bin[j][i]
 			list_range.append(int(num/255))
 
 		
-		bin_color = cv.cvtColor(bin,cv.COLOR_GRAY2BGR)
+		bin_color = cv.cvtColor(crop_bin,cv.COLOR_GRAY2BGR)
 		begin = 0
 		end = 0
 		
