@@ -4,11 +4,6 @@ import os
 import skimage 
 from skimage import io
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> b5f895f73875f922a61102873645d031dc928834
 def detection(image):
 	""" Detecting the words bounding boxes """
 	# Preprocess image for word detection
@@ -46,11 +41,7 @@ def drawWord(binary_word,binary_img):
 			if binary_word[y][x] != 0:
 				num+=1
 		hist_word[x]=num
-<<<<<<< HEAD
 		#print(hist_word[x])
-=======
-		print(hist_word[x])
->>>>>>> b5f895f73875f922a61102873645d031dc928834
 	binary_img = cv.cvtColor(binary_img,cv.COLOR_GRAY2BGR)
 	
 	list_pos = []
@@ -87,13 +78,9 @@ def show_display(img,cols,max_h,rank,list_range):
 def detect_char(img, list_pos, MIN = 40,MAX = 85,min_cum = 3,min_rate_below = 1,max_rate_blow = 0.70):
 	#path_img = os.path.join("detect_ocr","OCR","5.jpg")
 	height,width = img.shape[:2]
-<<<<<<< HEAD
+
 	for i,pos in enumerate(list_pos):
 		red_line, blue_line = pos[:2]
-=======
-	for i in range (len(list_pos))
-		red_line, blue_line = list_pos[x][x]
->>>>>>> b5f895f73875f922a61102873645d031dc928834
 		crop_img = img[0:height, red_line:blue_line]
 		cv2.imshow("cropped", crop_img)
 		gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -112,13 +99,8 @@ def detect_char(img, list_pos, MIN = 40,MAX = 85,min_cum = 3,min_rate_below = 1,
 			num = 0
 			for j in range(h):
 				num += bin[j][i]
-			
-<<<<<<< HEAD
 			list_range.append(int(num/255))
-=======
-			# list_range.append(int(num/255))
->>>>>>> b5f895f73875f922a61102873645d031dc928834
-		
+
 		
 		bin_color = cv.cvtColor(bin,cv.COLOR_GRAY2BGR)
 		begin = 0
