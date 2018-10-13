@@ -75,7 +75,11 @@ def show_display(img,cols,max_h,rank,list_range):
 				cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 	print("pos " + str(rank) + " : " + str(cols) + "---", list_range[cols])
 	
-def detect_char(img, list_pos, MIN = 40,MAX = 90,min_cum = 3,min_rate_below = 1,max_rate_blow = 0.8):
+#<<<<<<< HEAD
+#def detect_char(img, list_pos, MIN = 40,MAX = 90,min_cum = 3,min_rate_below = 1,max_rate_blow = 0.8):
+#=======
+def detect_char(img, list_pos, MIN = 40,MAX = 85,min_cum = 3,min_rate_below = 1,max_rate_blow = 0.70):
+#>>>>>>> e464bbeec735c6786abea448694aef8c2b75c7bf
 	#path_img = os.path.join("detect_ocr","OCR","5.jpg")
 	height,width = img.shape[:2]
 
@@ -184,8 +188,13 @@ def detect_char(img, list_pos, MIN = 40,MAX = 90,min_cum = 3,min_rate_below = 1,
 					break
 			begin_new = xxx
 		drawing_window = 'binary'
+#<<<<<<< HEAD
 		#cv.namedWindow(drawing_window,cv.WINDOW_NORMAL)
 		#cv.resizeWindow(drawing_window, height, width)
+#=======
+#		cv.namedWindow(drawing_window,cv.WINDOW_NORMAL)
+#		cv.resizeWindow(drawing_window, height, width)
+#>>>>>>> e464bbeec735c6786abea448694aef8c2b75c7bf
 		cv.imshow(drawing_window,bin_color)
 		cv.waitKey(0)
 		
@@ -219,4 +228,8 @@ if __name__ == "__main__":
 	cv.resizeWindow(name_word, height, width)
 	cv.imshow(name_word, binary_word)
 
+#<<<<<<< HEAD
 	cv.waitKey(0)
+#=======
+#	cv.waitKey(0)
+#>>>>>>> e464bbeec735c6786abea448694aef8c2b75c7bf
